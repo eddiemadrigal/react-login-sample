@@ -17,7 +17,7 @@ function Navbar(props) {
 		<Router>
 		<div className='App'>
 			<nav>
-				<h2>Co-Make</h2>
+				<h2>Login Sample Code</h2>
 				<div className='nav-links'>
 					<Link to='/' className='link'>
 						Home
