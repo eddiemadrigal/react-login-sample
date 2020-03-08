@@ -1,13 +1,14 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Main from "./Main";
+
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Eddie Madrigal</h1>
-    </div>
-  );
+
+	return (
+		<div>
+			<Main />
+		</div>
+	);
 }
 
 export default App;
