@@ -9,10 +9,12 @@ function Main() {
     const [registerBox, setRegisterBox] = useState(false);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [loginAttempt, setLoginAttempt] = useState(false);
+    const [data, setData] = useState([]);
 
     return (
         <>
             <Navbar 
+                data = { data } setData = { setData } 
                 setLoginBox = {setLoginBox} loginBox = {loginBox } 
                 setRegisterBox = { setRegisterBox } registerBox = { registerBox }
                 loginAttempt = { loginAttempt } setLoginAttempt = { setLoginAttempt }

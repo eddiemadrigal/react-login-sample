@@ -14,6 +14,7 @@ function LoginBox(props) {
 		<div className='inner-container'>
 			<div className='box'>
 				<div className='input-group'>
+					<p>User: webuser<br />Password: Password123#</p>
 					<Formik
 						initialValues={{
 							username: '',
@@ -50,15 +51,15 @@ function LoginBox(props) {
 							return errors;
 						}}
 						onSubmit={( values, { resetForm } ) => {
+							window.localStorage.clear();
 							let submitValues = values;
 							axios
 								.get(
-									'https://cors-anywhere.herokuapp.com/https://eddiemadrigal.net/users/users.json', submitValues
+									'https://cors-anywhere.herokuapp.com/https://eddiemadrigal.net/users/current.json', submitValues
 								)
 								.then(res => {
-
+									console.log("Res: ", res);
 									const myData = [];
-									console.log("3-6 myData: ", myData);
 									res.data.forEach(({id, fname, lname, username, password, email }) => {
 										myData.push({ 
 											id: `${id}`,
@@ -70,6 +71,8 @@ function LoginBox(props) {
 									});
 
 									let userResults = myData.filter( function(user) {
+										console.log("username from url: ", user["username"]);
+										console.log("username from form: ", values.username);
 										return user["username"] === values.username;
 									});
 
@@ -77,12 +80,15 @@ function LoginBox(props) {
 										console.log("User found");
 										console.log("user results: ", userResults);
 										let passwordResults = userResults.filter( function(user) {
+											console.log("password from url: ", user["password"]);
+											console.log("password from form: ", values.password);
 											return user["password"] === values.password;
 										});
 										if (passwordResults.length > 0) {
 											props.setLogin(true);
 											window.sessionStorage.setItem('id', passwordResults[0]["id"]);
 											let currentId = window.sessionStorage.getItem('id');
+											console.log("myData info: ", myData)
 											history.push(`/dashboard/${currentId}`);
 										} else {
 											console.log("Password not good.")

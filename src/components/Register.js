@@ -72,6 +72,14 @@ function Register(props) {
                         onSubmit={(values, {setSubmitting}) => {
                         setTimeout(() => {
                             console.log(values);
+                            let tosRes = values["tos"] ? "Accepted" : "Not Accepted";
+                            alert(
+                                "username: " + values["username"] +
+                                "\nemail: " + values["email"] +
+                                "\npassword: " + values["password"] +
+                                "\nconfirmation password :" + values["password2"] +
+                                "\nterms of service: " +  tosRes
+                            );
                             setSubmitting(true); 
                         }, 400);
                     }}>

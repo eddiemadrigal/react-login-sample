@@ -44,6 +44,7 @@ function Navbar(props) {
 			<Route path="/login">
 				<Login
 
+				data = { props.data } setData = { props.setData } 
 				setLoginBox = {props.setLoginBox} loginBox = {props.loginBox } 
 				setRegisterBox = { props.setRegisterBox } registerBox = { props.registerBox }
 				setIsLoggedIn = { props.setIsLoggedIn }  isLoggedIn = { props.isLoggedIn }
